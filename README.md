@@ -17,7 +17,8 @@ DB_DATABASE=sakila
 
 - Activar el entorno virtual (macOS/Linux)
 ```bash
-  source venv/bin/activate
+python3 -m venv venv
+source venv/bin/activate
 ```
 
 - Instalar dependencias
@@ -28,7 +29,6 @@ pip install -r requirements.txt
 - Ejecutar el programa
 ```bash
 python main.py
-
 ```
 
 ### Paso 3 - Subir nuestra bases de datos Sakila
