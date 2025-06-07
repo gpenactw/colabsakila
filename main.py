@@ -43,13 +43,18 @@ def main():
     while True:
         print("\n=== SISTEMA DE GESTIÓN SAKILA ===")
         print("1. Gestionar Actores")
-        print("2. Gestionar Inventario")
-        print("3. Gestionar Idiomas")
-        print("4. Gestionar Pagos")
-        print("5. Gestionar Alquileres")
-        print("6. Gestionar Personal")
-        print("7. Gestionar Tiendas")
-        print("8. Salir")
+        print("6. Gestionar Clientes")
+        print("7. Gestionar Películas")
+        print("8. Gestionar Actores de Películas")
+        print("9. Gestionar Categoría de Películas")
+        print("10. Gestionar Descripción de Películas")
+        print("11. Gestionar Inventario")
+        print("12. Gestionar Idiomas")
+        print("13. Gestionar Pagos")
+        print("14. Gestionar Alquileres")
+        print("15. Gestionar Personal")
+        print("16. Gestionar Tiendas")
+        print("17. Salir")
         
         choice = input("Selecciona una opción: ")
         
@@ -58,37 +63,58 @@ def main():
             controller = ActorController(model)
             menu = ActorMenu(controller, db)
             menu.display()
-        elif choice == "2":
+        elif choice == "6":
+            model = CustomerModel(db)
+            controller = CustomerController(model)
+            menu = CustomerMenu(controller, db)
+            menu.display()
+        elif choice == "7":
+            model = FilmModel(db)
+            controller = FilmController(model)
+            menu = FilmMenu(controller, db)
+        elif choice == "8":
+            model = FilmActorModel(db)
+            controller = Film_ActorController(model)
+            menu = Film_ActorMenu(controller, db)
+        elif choice == "9":
+            model = FilmCategoryModel(db)
+            controller = Film_CategoryController(model)
+            menu = Film_CategoryMenu(controller, db)
+        elif choice == "10":
+            model = FilmTextModel(db)
+            controller = Film_TextController(model)
+            menu = Film_TextMenu(controller, db)
+        elif choice == "11":
             model = InventoryModel(db)
             controller = InventoryController(model)
             menu = InventoryMenu(controller, db)
             menu.display()
-        elif choice == "3":
+        elif choice == "12":
             model = LanguageModel(db)
             controller = LanguageController(model)
             menu = LanguageMenu(controller, db)
             menu.display()
-        elif choice == "4":
+        elif choice == "13":
             model = PaymentModel(db)
             controller = PaymentController(model)
             menu = PaymentMenu(controller, db)
             menu.display()
-        elif choice == "5":
+        elif choice == "14":
             model = RentalModel(db)
             controller = RentalController(model)
             menu = RentalMenu(controller, db)
             menu.display()
-        elif choice == "6":
+        elif choice == "15":
             model = StaffModel(db)
             controller = StaffController(model)
             menu = StaffMenu(controller, db)
             menu.display()
-        elif choice == "7":
+        elif choice == "16":
             model = StoreModel(db)
             controller = StoreController(model)
             menu = StoreMenu(controller, db)
             menu.display()
-        elif choice == "8":
+        elif choice == "17":
             db.close()
             print("¡Hasta luego!")
             break
