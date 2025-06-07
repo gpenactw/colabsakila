@@ -1,5 +1,8 @@
-from controllers.AddressController import AddressController
+from controllers.CityController import CityController
+from controllers.CountryController import CountryController
 from dbcontext import DbContext
+from controllers.AddressController import AddressController
+from controllers.CategoryController import CategoryController
 from controllers.ActorController import ActorController
 from controllers.CustomerController import CustomerController
 from controllers.FilmController import FilmController
@@ -14,6 +17,9 @@ from controllers.StaffController import StaffController
 from controllers.StoreController import StoreController
 from models.ActorModel import ActorModel
 from models.AddressModel import AddressModel
+from models.CategoryModel import CategoryModel
+from models.CityModel import CityModel
+from models.CountryModel import CountryModel
 from models.CustomerModel import CustomerModel
 from models.FilmModel import FilmModel
 from models.FilmActorModel import FilmActorModel
@@ -27,6 +33,9 @@ from models.StaffModel import StaffModel
 from models.StoreModel import StoreModel
 from views.ActorMenu import ActorMenu
 from views.AddressMenu import AddressMenu
+from views.CategoryMenu import CategoryMenu
+from views.CityMenu import CityMenu
+from views.CountryMenu import CountryMenu
 from views.CustomerMenu import CustomerMenu
 from views.FilmMenu import FilmMenu
 from views.Film_ActorMenu import Film_ActorMenu
@@ -39,7 +48,6 @@ from views.RentalMenu import RentalMenu
 from views.StaffMenu import StaffMenu
 from views.StoreMenu import StoreMenu
 
-
 def main():
     db = DbContext()
     
@@ -47,13 +55,9 @@ def main():
         print("\n=== SISTEMA DE GESTIÓN SAKILA ===")
         print("1. Gestionar Actores")
         print("2. Gestionar Direcciones")
-        print("2. Gestionar Inventario")
-        print("3. Gestionar Idiomas")
-        print("4. Gestionar Pagos")
-        print("5. Gestionar Alquileres")
-        print("6. Gestionar Personal")
-        print("7. Gestionar Tiendas")
-        print("8. Salir")
+        print("3. Gestionar Categorias")
+        print("4. Gestionar Ciudad")
+        print("5. Gestionar Pais")
         print("6. Gestionar Clientes")
         print("7. Gestionar Películas")
         print("8. Gestionar Actores de Películas")
@@ -74,12 +78,48 @@ def main():
             controller = ActorController(model)
             menu = ActorMenu(controller, db)
             menu.display()
-        if choice == "2":
+        elif choice == "2":
             model = AddressModel(db)
             controller = AddressController(model)
-            menu = AddressMenu(controller, db)
+            menu = AddressMenu(controller)
             menu.display()
-        elif choice == "0":
+        elif choice == "3":
+            model = CategoryModel(db)
+            controller = CategoryController(model)
+            menu = CategoryMenu(controller)
+            menu.display()
+        elif choice == "4":
+            model = CityModel(db)
+            controller = CityController(model)
+            menu = CityMenu(controller)
+            menu.display()
+        elif choice == "5":
+            model = CountryModel(db)
+            controller = CountryController(model)
+            menu = CountryMenu(controller)
+            menu.display()
+        elif choice == "6":
+            model = CustomerModel(db)
+            controller = CustomerController(model)
+            menu = CustomerMenu(controller, db)
+            menu.display()
+        elif choice == "7":
+            model = FilmModel(db)
+            controller = FilmController(model)
+            menu = FilmMenu(controller, db)
+        elif choice == "8":
+            model = FilmActorModel(db)
+            controller = Film_ActorController(model)
+            menu = Film_ActorMenu(controller, db)
+        elif choice == "9":
+            model = FilmCategoryModel(db)
+            controller = Film_CategoryController(model)
+            menu = Film_CategoryMenu(controller, db)
+        elif choice == "10":
+            model = FilmTextModel(db)
+            controller = Film_TextController(model)
+            menu = Film_TextMenu(controller, db)
+        elif choice == "11":
             model = InventoryModel(db)
             controller = InventoryController(model)
             menu = InventoryMenu(controller, db)

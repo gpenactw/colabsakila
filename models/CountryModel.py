@@ -1,3 +1,6 @@
+from datetime import datetime
+from models.DTO.Country import Country
+
 class CountryModel:
     def __init__(self, db):
         self.db = db
