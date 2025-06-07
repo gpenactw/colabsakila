@@ -57,7 +57,7 @@ def main():
         print("2. Gestionar Direcciones")
         print("3. Gestionar Categorias")
         print("4. Gestionar Ciudad")
-        print("5. Gestionar Pais")
+        print("5. Gestionar País")
         print("6. Gestionar Clientes")
         print("7. Gestionar Películas")
         print("8. Gestionar Actores de Películas")

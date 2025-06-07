@@ -15,7 +15,7 @@ class CountryModel:
 
     def update(self, country_id, country):
         now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        self.db.execute("UPDATE country SET country=%s, last_update=%s WHERE country_id=%s", (country, now, country_id))
+        self.db.execute("UPDATE country SET country=%s WHERE country_id=%s", (country, country_id))
 
     def delete(self, country_id):
         self.db.execute("DELETE FROM country WHERE country_id=%s", (country_id,))

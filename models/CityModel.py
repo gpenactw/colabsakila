@@ -1,3 +1,6 @@
+from datetime import datetime
+from models.DTO.City import City
+
 class CityModel:
     def __init__(self, db):
         self.db = db
