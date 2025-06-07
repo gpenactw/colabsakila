@@ -1,13 +1,17 @@
 import mysql.connector
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 class DbContext:
     def __init__(self):
         self.conn = mysql.connector.connect(
-            host="localhost",
-            user="pythonuser",
-            port=3307,
-            password="2930",
-            database="sakila"
+            host=os.getenv("DB_HOST"),
+            user=os.getenv("DB_USER"),
+            port=int(os.getenv("DB_PORT")),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_DATABASE")
         )
         self.cursor = self.conn.cursor(dictionary=True , buffered=True)
 

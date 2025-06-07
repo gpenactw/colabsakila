@@ -1,30 +1,39 @@
 from dbcontext import DbContext
-from models import *
-from controllers import *
+from controllers.ActorController import ActorController
+from controllers.InventoryController import InventoryController
+from models.ActorModel import ActorModel
+from models.InventoryModel import InventoryModel
+from views.ActorMenu import ActorMenu
+from views.InventoryMenu import InventoryMenu
+
 
 def main():
     db = DbContext()
-    model = ActorModel(db)
-    controller = ActorController(model)
-
+    
     while True:
-        print("\n1. Listar actores\n2. Crear actor\n3. Actualizar actor\n4. Eliminar actor\n5. Salir")
+        print("\n=== SISTEMA DE GESTIÓN SAKILA ===")
+        print("1. Gestionar Actores")
+        print("2. Gestionar Inventario")
+        print("3. Salir")
+        
         choice = input("Selecciona una opción: ")
-
+        
         if choice == "1":
-            controller.list_actors()
+            model = ActorModel(db)
+            controller = ActorController(model)
+            menu = ActorMenu(controller, db)
+            menu.display()
         elif choice == "2":
-            controller.create_actor()
+            model = InventoryModel(db)
+            controller = InventoryController(model)
+            menu = InventoryMenu(controller, db)
+            menu.display()
         elif choice == "3":
-            controller.update_actor()
-        elif choice == "4":
-            controller.delete_actor()
-        elif choice == "5":
             db.close()
-            print("Ha salido del programa.")
+            print("¡Hasta luego!")
             break
         else:
-            print("Opción inválida.")
+            print("Opción inválida. Por favor intenta de nuevo.")
 
 if __name__ == "__main__":
     main()
