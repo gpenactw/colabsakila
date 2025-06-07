@@ -1,3 +1,4 @@
+from controllers.AddressController import AddressController
 from dbcontext import DbContext
 from controllers.ActorController import ActorController
 from controllers.CustomerController import CustomerController
@@ -12,6 +13,7 @@ from controllers.RentalController import RentalController
 from controllers.StaffController import StaffController
 from controllers.StoreController import StoreController
 from models.ActorModel import ActorModel
+from models.AddressModel import AddressModel
 from models.CustomerModel import CustomerModel
 from models.FilmModel import FilmModel
 from models.FilmActorModel import FilmActorModel
@@ -24,6 +26,7 @@ from models.RentalModel import RentalModel
 from models.StaffModel import StaffModel
 from models.StoreModel import StoreModel
 from views.ActorMenu import ActorMenu
+from views.AddressMenu import AddressMenu
 from views.CustomerMenu import CustomerMenu
 from views.FilmMenu import FilmMenu
 from views.Film_ActorMenu import Film_ActorMenu
@@ -43,6 +46,14 @@ def main():
     while True:
         print("\n=== SISTEMA DE GESTIÓN SAKILA ===")
         print("1. Gestionar Actores")
+        print("2. Gestionar Direcciones")
+        print("2. Gestionar Inventario")
+        print("3. Gestionar Idiomas")
+        print("4. Gestionar Pagos")
+        print("5. Gestionar Alquileres")
+        print("6. Gestionar Personal")
+        print("7. Gestionar Tiendas")
+        print("8. Salir")
         print("6. Gestionar Clientes")
         print("7. Gestionar Películas")
         print("8. Gestionar Actores de Películas")
@@ -63,28 +74,12 @@ def main():
             controller = ActorController(model)
             menu = ActorMenu(controller, db)
             menu.display()
-        elif choice == "6":
-            model = CustomerModel(db)
-            controller = CustomerController(model)
-            menu = CustomerMenu(controller, db)
+        if choice == "2":
+            model = AddressModel(db)
+            controller = AddressController(model)
+            menu = AddressMenu(controller, db)
             menu.display()
-        elif choice == "7":
-            model = FilmModel(db)
-            controller = FilmController(model)
-            menu = FilmMenu(controller, db)
-        elif choice == "8":
-            model = FilmActorModel(db)
-            controller = Film_ActorController(model)
-            menu = Film_ActorMenu(controller, db)
-        elif choice == "9":
-            model = FilmCategoryModel(db)
-            controller = Film_CategoryController(model)
-            menu = Film_CategoryMenu(controller, db)
-        elif choice == "10":
-            model = FilmTextModel(db)
-            controller = Film_TextController(model)
-            menu = Film_TextMenu(controller, db)
-        elif choice == "11":
+        elif choice == "0":
             model = InventoryModel(db)
             controller = InventoryController(model)
             menu = InventoryMenu(controller, db)

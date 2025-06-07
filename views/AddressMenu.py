@@ -9,7 +9,7 @@ class AddressMenu:
             choice = input("Selecciona una opción: ")
 
             if choice == "1":
-                self.controller.list_addresses
+                self.controller.list_addresses()
             elif choice == "2":
                 self.controller.create_address()
             elif choice == "3":

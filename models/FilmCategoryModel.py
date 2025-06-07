@@ -46,6 +46,3 @@ class FilmCategoryModel:
         query = "DELETE FROM film_category WHERE film_id = %s AND category_id = %s"
         self.cursor.execute(query, (film_id, category_id))
         self.conn.commit()
-
-from datetime import datetime
-from entities import Film_Text
