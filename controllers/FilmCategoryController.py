@@ -30,11 +30,8 @@ class FilmCategoryController:
             print("La relación entre esta película y categoría ya existe.")
             return
 
-        from datetime import datetime
-        last_update = datetime.now()
-
         try:
-            self.model.create_film_category(film_id, category_id, last_update)
+            self.model.add(film_id, category_id)
             print("Relación Película-Categoría creada exitosamente.")
         except Exception as err:
             if hasattr(err, 'errno') and err.errno == 1452:
@@ -55,12 +52,10 @@ class FilmCategoryController:
         if not self.model.film_category_exists(film_id, category_id):
             print(f"No existe una relación entre la Película {film_id} y la Categoría {category_id}.")
             return
-        from datetime import datetime
-        last_update = datetime.now()
-
+        print(f"Actualizando last_update para film_id={film_id}, category_id={category_id}...")
         try:
-            self.model.update_film_category(film_id, category_id, last_update)
-            print("Se actualizó el campo 'last_update' de la relación Película-Categoría.")
+            self.model.update(film_id, category_id)
+            print("Se actualizó el campo 'last_update' de la relación Película-Categoría exitosamente.")
         except Exception as err:
             print(f"Error inesperado al actualizar relación Película-Categoría: {err}")
 
@@ -82,7 +77,7 @@ class FilmCategoryController:
             return
 
         try:
-            self.model.delete_film_category(film_id, category_id)
+            self.model.delete(film_id, category_id)
             print("Relación Película-Categoría eliminada exitosamente.")
         except Exception as err:
             print(f"Error inesperado al eliminar relación Película-Categoría: {err}")
