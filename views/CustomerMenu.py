@@ -1,7 +1,6 @@
 class CustomerMenu:
-    def __init__(self, controller, db):
+    def __init__(self, controller):
         self.controller = controller
-        self.db = db
 
     def display(self):
         while True:

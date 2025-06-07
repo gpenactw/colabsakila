@@ -10,13 +10,16 @@ class FilmModel:
         return [Film(**row) for row in result.fetchall()]
 
     def film_exists(self, title, release_year, exclude_id=None):
-        query = "SELECT COUNT(*) FROM film WHERE title = %s AND release_year = %s"
+        query = "SELECT COUNT(*) AS count FROM film WHERE title = %s AND release_year = %s"
         params = [title, release_year]
         if exclude_id:
             query += " AND film_id != %s"
             params.append(exclude_id)
         result = self.db.execute(query, tuple(params))
-        return result.fetchone()[0] > 0
+        row = result.fetchone()
+        if row is None:
+            return False
+        return row['count'] > 0
 
     def film_id_exists(self, film_id):
         result = self.db.execute("SELECT COUNT(*) FROM film WHERE film_id = %s", (film_id,))

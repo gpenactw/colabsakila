@@ -6,9 +6,9 @@ from controllers.CategoryController import CategoryController
 from controllers.ActorController import ActorController
 from controllers.CustomerController import CustomerController
 from controllers.FilmController import FilmController
-from controllers.Film_ActorController import Film_ActorController
-from controllers.Film_CategoryController import Film_CategoryController
-from controllers.Film_TextController import Film_TextController
+from controllers.FilmActorController import FilmActorController
+from controllers.FilmCategoryController import FilmCategoryController
+from controllers.FilmTextController import FilmTextController
 from controllers.InventoryController import InventoryController
 from controllers.LanguageController import LanguageController
 from controllers.PaymentController import PaymentController
@@ -38,9 +38,9 @@ from views.CityMenu import CityMenu
 from views.CountryMenu import CountryMenu
 from views.CustomerMenu import CustomerMenu
 from views.FilmMenu import FilmMenu
-from views.Film_ActorMenu import Film_ActorMenu
-from views.Film_CategoryMenu import Film_CategoryMenu
-from views.Film_TextMenu import Film_TextMenu
+from views.FilmActorMenu import Film_ActorMenu
+from views.FilmCategoryMenu import Film_CategoryMenu
+from views.FilmTextMenu import Film_TextMenu
 from views.InventoryMenu import InventoryMenu
 from views.LanguageMenu import LanguageMenu
 from views.PaymentMenu import PaymentMenu
@@ -101,24 +101,28 @@ def main():
         elif choice == "6":
             model = CustomerModel(db)
             controller = CustomerController(model)
-            menu = CustomerMenu(controller, db)
+            menu = CustomerMenu(controller)
             menu.display()
         elif choice == "7":
             model = FilmModel(db)
             controller = FilmController(model)
-            menu = FilmMenu(controller, db)
+            menu = FilmMenu(controller)
+            menu.display()
         elif choice == "8":
             model = FilmActorModel(db)
-            controller = Film_ActorController(model)
+            controller = FilmActorController(model)
             menu = Film_ActorMenu(controller, db)
+            menu.display()
         elif choice == "9":
             model = FilmCategoryModel(db)
-            controller = Film_CategoryController(model)
+            controller = FilmCategoryController(model)
             menu = Film_CategoryMenu(controller, db)
+            menu.display()
         elif choice == "10":
             model = FilmTextModel(db)
-            controller = Film_TextController(model)
+            controller = FilmTextController(model)
             menu = Film_TextMenu(controller, db)
+            menu.display()
         elif choice == "11":
             model = InventoryModel(db)
             controller = InventoryController(model)

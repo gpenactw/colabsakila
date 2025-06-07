@@ -1,4 +1,4 @@
-class Film_TextController:
+class FilmTextController:
     def __init__(self, model):
         self.model = model
 
