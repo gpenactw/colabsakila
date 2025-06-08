@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Staff import Staff
+from models.Entities.Staff import Staff
 
 class StaffModel:
     def __init__(self, db):

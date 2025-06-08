@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Address import Address
+from models.Entities.Address import Address
 class AddressModel:
     def __init__(self, db):
         self.db = db

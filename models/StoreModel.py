@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Store import Store
+from models.Entities.Store import Store
 
 class StoreModel:
     def __init__(self, db):

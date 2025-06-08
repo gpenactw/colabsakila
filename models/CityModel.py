@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.City import City
+from models.Entities.City import City
 
 class CityModel:
     def __init__(self, db):

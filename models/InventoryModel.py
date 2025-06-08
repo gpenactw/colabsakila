@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Inventory import Inventory
+from models.Entities.Inventory import Inventory
 
 class InventoryModel:
     def __init__(self, db):

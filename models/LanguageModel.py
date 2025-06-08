@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Language import Language
+from models.Entities.Language import Language
 
 class LanguageModel:
     def __init__(self, db):

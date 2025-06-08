@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Customer import Customer
+from models.Entities.Customer import Customer
 
 class CustomerModel:
     def __init__(self, db):

@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Payment import Payment
+from models.Entities.Payment import Payment
 
 class PaymentModel:
     def __init__(self, db):

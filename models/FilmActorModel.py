@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.FilmActor import FilmActor
+from models.Entities.FilmActor import FilmActor
 
 class FilmActorModel:
     def __init__(self, db):

@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.FilmText import FilmText
+from models.Entities.FilmText import FilmText
 
 class FilmTextModel:
     def __init__(self, db):

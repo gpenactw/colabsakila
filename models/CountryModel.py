@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Country import Country
+from models.Entities.Country import Country
 
 class CountryModel:
     def __init__(self, db):

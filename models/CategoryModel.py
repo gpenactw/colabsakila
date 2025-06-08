@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Category import Category
+from models.Entities.Category import Category
 class CategoryModel:
     def __init__(self, db):
         self.db = db

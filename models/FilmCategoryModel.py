@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.FilmCategory import FilmCategory
+from models.Entities.FilmCategory import FilmCategory
 
 class FilmCategoryModel:
     def __init__(self, db):

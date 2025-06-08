@@ -1,5 +1,5 @@
 from datetime import datetime
-from models.DTO.Rental import Rental
+from models.Entities.Rental import Rental
 
 class RentalModel:
     def __init__(self, db):
