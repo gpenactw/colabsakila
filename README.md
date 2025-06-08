@@ -1,6 +1,12 @@
 # colabsakila
 Caso practico #2 colaborativo Ciencias de Datos I
 
+### Estructura del Proyecto
+
+- DbContext: ```Se encuentra en dbcontext.py.```
+- Model ( list<object>): ```Son cada unas de las Entidades Modelos como: ActorModel.py.``
+- Entity Object: ```Son todas las entidades en la carpeta Models/DTO.```
+- Framework MVC: ```Utilizamos carpetas separadas: Models, Controllers y Views.```
 
 ### Paso 1 - Configurar Credenciales a Utilizar
 
