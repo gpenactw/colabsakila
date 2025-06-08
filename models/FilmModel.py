@@ -22,11 +22,13 @@ class FilmModel:
         return row['count'] > 0
 
     def film_id_exists(self, film_id):
-        result = self.db.execute("SELECT COUNT(*) FROM film WHERE film_id = %s", (film_id,))
-        return result.fetchone()[0] > 0
+        result = self.db.execute("SELECT COUNT(*) as count FROM film WHERE film_id = %s", (film_id,))
+        row = result.fetchone()
+        return row['count'] > 0 if row else False
 
     def add(self, title, description, release_year, language_id, original_language_id,
-            rental_duration, rental_rate, length, replacement_cost, rating, special_features, last_update):
+            rental_duration, rental_rate, length, replacement_cost, rating, special_features):
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         self.db.execute("""
             INSERT INTO film (
                 title, description, release_year, language_id, original_language_id,
@@ -36,11 +38,12 @@ class FilmModel:
         """, (
             title, description, release_year, language_id, original_language_id,
             rental_duration, rental_rate, length, replacement_cost,
-            rating, special_features, last_update
+            rating, special_features, now
         ))
 
     def update(self, film_id, title, description, release_year, language_id, original_language_id,
-               rental_duration, rental_rate, length, replacement_cost, rating, special_features, last_update):
+               rental_duration, rental_rate, length, replacement_cost, rating, special_features):
+        now = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
         self.db.execute("""
             UPDATE film SET
                 title = %s,
@@ -59,8 +62,23 @@ class FilmModel:
         """, (
             title, description, release_year, language_id, original_language_id,
             rental_duration, rental_rate, length, replacement_cost,
-            rating, special_features, last_update, film_id
+            rating, special_features, now, film_id
         ))
 
     def delete(self, film_id):
         self.db.execute("DELETE FROM film WHERE film_id = %s", (film_id,))
+    
+    def get_related_actors_count(self, film_id):
+        result = self.db.execute("SELECT COUNT(*) as count FROM film_actor WHERE film_id = %s", (film_id,))
+        row = result.fetchone()
+        return row['count'] if row else 0
+    
+    def get_related_categories_count(self, film_id):
+        result = self.db.execute("SELECT COUNT(*) as count FROM film_category WHERE film_id = %s", (film_id,))
+        row = result.fetchone()
+        return row['count'] if row else 0
+    
+    def get_related_inventory_count(self, film_id):
+        result = self.db.execute("SELECT COUNT(*) as count FROM inventory WHERE film_id = %s", (film_id,))
+        row = result.fetchone()
+        return row['count'] if row else 0
