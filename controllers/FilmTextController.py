@@ -30,7 +30,7 @@ class FilmTextController:
             return
 
         try:
-            self.model.create_film_text(film_id, title, description)
+            self.model.add(film_id, title, description)
             print("Texto de la película creado exitosamente.")
         except Exception as err:
             print(f"Error inesperado al crear texto de la película: {err}")
@@ -50,7 +50,7 @@ class FilmTextController:
         description = input("Nueva descripción: ")
 
         try:
-            self.model.update_film_text(film_id, title, description)
+            self.model.update(film_id, title, description)
             print("Texto de la película actualizado exitosamente.")
         except Exception as err:
             print(f"Error inesperado al actualizar texto de la película: {err}")
@@ -73,7 +73,7 @@ class FilmTextController:
             return
 
         try:
-            self.model.delete_film_text(film_id)
+            self.model.delete(film_id)
             print("Texto de la película eliminado exitosamente.")
         except Exception as err:
             print(f"Error inesperado al eliminar texto de la película: {err}")
